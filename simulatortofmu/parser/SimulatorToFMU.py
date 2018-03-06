@@ -290,15 +290,16 @@ def main():
     
     # Export CYME using SimulatorToFMU
     tool_export = args.specific_export
-    if(tool_export in ["cyme"]):
-        python_vers = '34'
-        # Check command line options
-        if not(platform.system().lower() in ['windows']):
-            log.info('SimulatorToFMU can only export CYME for Windows.')
-            return
-    else:
-        log.error("CYME is the only supported custom tool.")
-        return
+    if (not (tool_export is None)):
+		if(tool_export in ["cyme"]):
+			python_vers = '34'
+			# Check command line options
+			if not(platform.system().lower() in ['windows']):
+				log.info('SimulatorToFMU can only export CYME for Windows.')
+				return
+		else:
+			log.error("CYME is the only supported custom tool.")
+			return
     
     # Get the memory flag
     has_memory = args.has_memory
